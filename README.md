@@ -1,118 +1,61 @@
-# Google Docs Automation using Make (Integromat)
+# Automated Legal Document Workflow using Make (Integromat)
 
-This project automates document creation and delivery using **Google Sheets + Google Docs + Gmail + Make**.
-
----
-
-## ✅ Workflow Summary
-When a new row is added in Google Sheets:
-1. Make detects the new request
-2. Finds the matching Google Docs template
-3. Creates a personalized document
-4. Saves it in Google Drive
-5. Sends it to the client by email
-6. Updates the Google Sheet with a **"SENT"** status
+## 🧩 Overview
+This project automates the process of generating and sending customized legal documents using **Make (Integromat)**. It integrates **Google Sheets**, **Google Docs**, **Google Drive**, and **Gmail** to streamline client communication.
 
 ---
 
-## ✅ Tools Used
-- Make (Integromat)
-- Google Sheets
-- Google Docs
-- Google Drive
-- Gmail
+## 🚀 Workflow Steps
+
+### 1️⃣ Google Sheets Trigger
+- The automation begins when a new row is added to the Google Sheet.
+- Required headers:
+  - Client Name
+  - Case Type
+  - Email
+  - Document Type Requested
+  - Sent
+
+### 2️⃣ Google Docs Template
+- A pre-designed Google Docs template is used.
+- Dynamic placeholders like `{{Client Name}}`, `{{Case Type}}`, `{{Email}}`, and `{{Document Type Requested}}` are replaced automatically.
+
+### 3️⃣ Google Drive Download
+- The generated document is downloaded from Drive to ensure it's properly formatted before attaching to the email.
+
+### 4️⃣ Gmail Send Email
+- Sends an email to the client with:
+  - Subject: “Your Legal Document - [Case Type]”
+  - Attachment: The generated document.
+  - Body: A personalized message.
+
+### 5️⃣ Google Sheets Update
+- Once the email is sent successfully, the `Sent` column is updated with “✅ Yes”.
 
 ---
 
-## ✅ Google Sheet Setup
-Create a Google Sheet with these column headers:
-
-Client Name | Case Type | Email | Document Type Requested | Status
-
-yaml
-Copy code
-
-Make sure `Status` is empty initially. The automation will update it.
+## 📂 Tech Stack
+- **Automation Platform:** Make (Integromat)
+- **Google Services:**
+  - Google Sheets
+  - Google Docs
+  - Google Drive
+  - Gmail
 
 ---
 
-## ✅ Google Docs Template Setup
-Create a Google Docs template in Google Drive with placeholders like:
-
-Client Name: {{ClientName}}
-Case Type: {{CaseType}}
-Email: {{Email}}
-Document Type: {{DocumentType}}
-
-Dear {{ClientName}},
-Your document for {{CaseType}} is now ready.
-
-yaml
-Copy code
-
-Save it inside a folder named `Automation/Templates`.
+## 🧠 Benefits
+- Fully automated and scalable
+- Eliminates manual document creation
+- Ensures consistent communication
+- Logs and updates client email status in real-time
 
 ---
 
-## ✅ Make Scenario Modules (Flow)
-Build this scenario in Make:
-
-1. **Google Sheets – Watch Rows**
-2. **Google Drive – Search Files** (finds template)
-3. **Google Docs – Create a Document from Template**
-4. **Google Drive – Move a File** (organizes output)
-5. **Gmail – Send an Email**
-6. **Google Sheets – Update a Row** (sets status to `SENT`)
+## 📺 Demo Video
+A complete walkthrough video will be uploaded soon, demonstrating:
+- Workflow setup
+- Trigger and execution
+- Email verification and final output
 
 ---
-
-## ✅ Output
-- Customized Google Docs are created automatically
-- Each document is emailed to the client
-- Requests are marked as `SENT` in the sheet
-- No manual work required ✅
-
----
-
-## ✅ Folder Structure (Google Drive)
-Automation/
-├── Templates/
-│ └── Legal_Template.docx
-└── Generated/
-└── (Created documents will appear here)
-
-yaml
-Copy code
-
----
-
-## ✅ Example Row
-| Client Name | Case Type | Email | Document Type Requested | Status |
-|-------------|-----------|--------|--------------------------|--------|
-| John Doe | Lease Agreement | john@email.com | Lease Template | SENT ✅ |
-
----
-
-## ✅ How to Run
-1. Create Google Sheet and template
-2. Build scenario in Make using modules above
-3. Turn ON the scenario
-4. Add a new row in Google Sheets to test
-
----
-
-## ✅ Screenshots Included
-- Google Sheet
-- Google Docs Template
-- Make Scenario Workflow
-- Output Document
-- Sent Email
-
----
-
-Feel free to use or improve this automation 🔥
-If you want, I can also:
-✅ Add a Project Description for GitHub
-✅ Add Usage Instructions
-✅ Add Installation and Setup section
-✅ Add License and Author Info
